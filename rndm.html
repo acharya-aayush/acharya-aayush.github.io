@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aayush Acharya | Tech Innovator</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fdfdfd, #dcdcdc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Rajdhani', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      border: 2px solid #000;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 1100px;
+      padding: 40px 50px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 45px rgba(0,0,0,0.3);
+    }
+
+    .left {
+      width: 60%;
+      color: #111;
+    }
+
+    .char-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5em;
+      letter-spacing: 1.5px;
+      color: #000;
+      border-bottom: 2px solid #000;
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .char-role {
+      font-size: 1.2em;
+      color: #555;
+      margin: 5px 0 20px;
+    }
+
+    .info {
+      font-size: 1.05em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .info span {
+      font-weight: 700;
+      color: #000;
+    }
+
+    .lore {
+      font-size: 1.05em;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.5);
+      border-left: 3px solid #000;
+      padding: 15px 20px;
+      color: #333;
+    }
+
+    .avatar-box {
+      width: 35%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .avatar {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0,0,0,0.3));
+      transform: scale(1);
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .avatar {
+      transform: scale(1.05) rotate(-2deg);
+    }
+
+    /* Subtle animated white light sweep */
+    .light-effect {
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+      transform: skewX(-25deg);
+      animation: lightSweep 5s infinite;
+    }
+
+    @keyframes lightSweep {
+      0% { left: -150%; }
+      100% { left: 150%; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="light-effect"></div>
+
+    <div class="left">
+      <h2 class="char-name">AAYUSH ACHARYA</h2>
+      <h3 class="char-role">Tech Innovator</h3>
+
+      <div class="info">
+        <p><span>Specialty:</span> AI/ML Engineering</p>
+        <p><span>Skill Path:</span> Web Development → Backend Systems → Machine Learning</p>
+        <p><span>Current Quest:</span> Advanced AI Specialization</p>
+        <p><span>Achievements:</span> Multiple Project Wins, Bootcamp Completions</p>
+        <p><span>Base:</span> St. Xavier's College Arena</p>
+      </div>
+
+      <div class="lore">
+        <p>Aayush is a focused learner, crafting logic with precision and building systems that blend function with flair.  
+        From college projects to real-world builds, he’s driven by curiosity — not chaos.  
+        Calm, disciplined, and always improving, he codes like an architect designing his next big match.</p>
+      </div>
+    </div>
+
+    <div class="avatar-box">
+      <img src="assets/avatar/avatar.png" alt="Avatar" class="avatar">
+    </div>
+  </div>
+</body>
+</html>
