@@ -38,13 +38,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add click event to manually change avatar
     avatarDisplay.addEventListener('click', changeAvatar);
-    
-    // Add hover effect for extra interactivity
-    avatarDisplay.addEventListener('mouseenter', function() {
-        this.style.transform = 'translate3d(0px, 0px, 100px) scale(1.1) rotateY(10deg)';
-    });
-    
-    avatarDisplay.addEventListener('mouseleave', function() {
-        this.style.transform = 'translate3d(0px, 0px, 80px) scale(1) rotateY(0deg)';
-    });
 });
