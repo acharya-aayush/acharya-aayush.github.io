@@ -700,9 +700,14 @@ body::-webkit-scrollbar {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.wrestler-title:hover {
-    color: #ff0000;
+.phenomenal-text {
+    color: #000000;
     transition: color 0.3s ease;
+}
+
+.wrestler-title:hover .phenomenal-text {
+    color: #0066ff;
+    text-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
 }
 
 .highlight-number {
@@ -864,21 +869,27 @@ body::-webkit-scrollbar {
     margin-left: 0.5rem;
 }
 
-/* Avatar Section - Clean and Simple */
+/* Avatar Section - WWE Character Spotlight Style */
 .avatar-container {
     position: relative;
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 800px;
 }
 
 .rotating-avatar {
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    transition: transform 0.5s ease;
+}
+
+.rotating-avatar:hover {
+    transform: scale(1.05) rotateY(5deg);
 }
 
 .avatar-img {
@@ -887,8 +898,107 @@ body::-webkit-scrollbar {
     object-fit: contain;
     object-position: center;
     transition: opacity 0.3s ease;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
+    position: relative;
+    z-index: 2;
 }
 
+.rotating-avatar:hover .avatar-img {
+    filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.6));
+}
+
+/* Spotlight/Glow Effect */
+.avatar-container::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.15) 0%, transparent 70%);
+    z-index: 1;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+/* Shine/Light Streak Effect */
+.avatar-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    z-index: 3;
+    pointer-events: none;
+    animation: shine 4s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 200%;
+    }
+}
+
+/* Dynamic Stat Overlay */
+.avatar-stats-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
+    padding: 10px 20px;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 4;
+    pointer-events: none;
+    min-width: 200px;
+    text-align: center;
+}
+
+.rotating-avatar:hover .avatar-stats-overlay {
+    opacity: 1;
+    bottom: 30px;
+}
+
+.stat-overall {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    margin-bottom: 5px;
+}
+
+.stat-specialty {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* No Arena Border - Remove confinement */
 .avatar-frame {
     display: none;
 }

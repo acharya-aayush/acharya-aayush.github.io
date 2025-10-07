@@ -1,41 +1,75 @@
-// Avatar rotation functionality
+// Avatar display with weighted probability (changes only on page reload)
 document.addEventListener('DOMContentLoaded', function() {
     const avatarDisplay = document.getElementById('avatarDisplay');
     const avatarImg = avatarDisplay.querySelector('.avatar-img');
     
-    // Array of available avatars
+    // Array of available avatars with weighted probabilities
     const avatars = [
-        'assets/avatar/avatar (1).png',
-        'assets/avatar/avatar (2).png', 
-        'assets/avatar/avatar (3).png',
-        'assets/avatar/avatar (4).png'
+        'assets/avatar/avatar (1).png', // 91% probability
+        'assets/avatar/avatar (2).png', // 4% probability
+        'assets/avatar/avatar (3).png', // 2.5% probability
+        'assets/avatar/avatar (4).png'  // 2.5% probability
     ];
     
-    let currentAvatarIndex = 0;
-    
-    // Function to change avatar
-    function changeAvatar() {
-        // Add fade out effect
-        avatarImg.style.opacity = '0';
+    // Weighted random selection function
+    function getWeightedRandomAvatar() {
+        const random = Math.random() * 100; // Get random number 0-100
         
-        setTimeout(() => {
-            // Change to next avatar
-            currentAvatarIndex = (currentAvatarIndex + 1) % avatars.length;
-            avatarImg.src = avatars[currentAvatarIndex];
-            
-            // Fade back in
-            avatarImg.style.opacity = '1';
-        }, 300);
+        if (random < 91) {
+            return 0; // Avatar 1 - 91% chance
+        } else if (random < 95) {
+            return 1; // Avatar 2 - 4% chance (91 + 4 = 95)
+        } else if (random < 97.5) {
+            return 2; // Avatar 3 - 2.5% chance (95 + 2.5 = 97.5)
+        } else {
+            return 3; // Avatar 4 - 2.5% chance (97.5 + 2.5 = 100)
+        }
     }
     
-    // Change avatar every 3 seconds
-    setInterval(changeAvatar, 3000);
+    // Select avatar based on weighted probability (only on page load)
+    const selectedIndex = getWeightedRandomAvatar();
+    avatarImg.src = avatars[selectedIndex];
     
-    // Random initial avatar on page load
-    const randomIndex = Math.floor(Math.random() * avatars.length);
-    avatarImg.src = avatars[randomIndex];
-    currentAvatarIndex = randomIndex;
+    // Dynamic rating increase on hover (WWE drama effect)
+    let ratingInterval;
+    let baseRating = 87;
+    let currentRating = baseRating;
+    let isHovering = false;
     
-    // Add click event to manually change avatar
-    avatarDisplay.addEventListener('click', changeAvatar);
+    avatarDisplay.addEventListener('mouseenter', function() {
+        isHovering = true;
+        const overallElement = document.getElementById('overallRating');
+        
+        if (overallElement && !ratingInterval) {
+            let targetRating = baseRating + 6; // Increase from 87 to 93
+            currentRating = baseRating;
+            
+            ratingInterval = setInterval(() => {
+                if (currentRating < targetRating) {
+                    currentRating++;
+                    overallElement.textContent = `OVERALL ${currentRating}`;
+                } else {
+                    clearInterval(ratingInterval);
+                    ratingInterval = null;
+                }
+            }, 80); // Smooth counting animation
+        }
+    });
+    
+    // Reset rating when hover ends
+    avatarDisplay.addEventListener('mouseleave', function() {
+        isHovering = false;
+        const overallElement = document.getElementById('overallRating');
+        
+        // Reset rating
+        if (ratingInterval) {
+            clearInterval(ratingInterval);
+            ratingInterval = null;
+        }
+        
+        if (overallElement) {
+            currentRating = baseRating;
+            overallElement.textContent = `OVERALL ${baseRating}`;
+        }
+    });
 });
