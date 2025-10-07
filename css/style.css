@@ -656,6 +656,298 @@ body::-webkit-scrollbar {
     font-style: italic;
 }
 
+/* New 3D Wrestling Card About Section */
+.about-card-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    perspective: 1000px;
+}
+
+.wrestler-card {
+    display: flex;
+    background: linear-gradient(135deg, #0000 18.75%, #f5f5f5 0 31.25%, #0000 0),
+                repeating-linear-gradient(45deg, #f5f5f5 -6.25% 6.25%, #ffffff 0 18.75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 0;
+    background-color: #f5f5f5;
+    border: 3px solid #ff0000;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: rgba(142, 142, 142, 0.3) 0px 30px 30px -10px;
+    transition: all 0.3s ease-in-out;
+    min-height: 600px;
+}
+
+.wrestler-card:hover {
+    background-position: -100px 100px, -100px 100px;
+    box-shadow: rgba(255, 0, 0, 0.2) 0px 35px 35px -10px;
+}
+
+.card-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.wrestler-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wrestler-title:hover {
+    color: #ff0000;
+    transition: color 0.3s ease;
+}
+
+.highlight-number {
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.wrestler-stats {
+    background: rgba(255, 0, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.wrestler-stats:hover {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.3);
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.stat-row:last-child {
+    margin-bottom: 0;
+}
+
+.stat-label {
+    font-weight: 700;
+    color: #000000;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    color: #ff0000;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.current-quest,
+.wrestler-traits,
+.achievements,
+.next-move {
+    margin-bottom: 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.current-quest:hover,
+.wrestler-traits:hover,
+.achievements:hover,
+.next-move:hover {
+    transform: translateY(-2px);
+}
+
+.current-quest h3,
+.wrestler-traits h3,
+.achievements h3,
+.next-move h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ff0000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.current-quest p,
+.next-move p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    color: #333333;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.trait-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.trait-badge {
+    background: #ff0000;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.trait-badge:hover {
+    background: #cc0000;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.achievements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievements li {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    color: #333333;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-weight: 500;
+}
+
+.achievements li::before {
+    content: "⚡";
+    position: absolute;
+    left: 0;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.fun-fact {
+    background: rgba(255, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #ff0000;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.fun-fact:hover {
+    background: rgba(255, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.fact-label {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    color: #ff0000;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.fact-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    color: #333333;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* Avatar Section */
+.avatar-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotating-avatar {
+    width: 250px;
+    height: 320px;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 80px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: rgba(255, 0, 0, 0.3) 0px 20px 25px -5px;
+}
+
+.rotating-avatar:hover {
+    transform: translate3d(0px, 0px, 100px) scale(1.05);
+    box-shadow: rgba(255, 0, 0, 0.5) 0px 25px 35px -5px;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.avatar-frame {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 3px solid #ff0000;
+    border-radius: 20px;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 0, 0, 0.1) 50%, transparent 70%);
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.wrestler-card:hover .avatar-frame {
+    border-color: #cc0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+/* Responsive Design for Wrestling Card */
+@media (max-width: 768px) {
+    .wrestler-card {
+        flex-direction: column;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .card-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+    
+    .wrestler-title {
+        font-size: 1.8rem;
+    }
+    
+    .avatar-container {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .rotating-avatar {
+        width: 200px;
+        height: 250px;
+    }
+    
+    .trait-badges {
+        justify-content: center;
+    }
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .about-container {
