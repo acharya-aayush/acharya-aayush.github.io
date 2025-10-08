@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading | Portfolio 2K25</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Randomly choose between the two loading screens
+        const loadingScreens = ['loading.html', 'loading-letters.html'];
+        const randomScreen = loadingScreens[Math.floor(Math.random() * loadingScreens.length)];
+        
+        // Immediately redirect to chosen loading screen
+        window.location.href = randomScreen;
+    </script>
+</body>
+</html>
