@@ -34,6 +34,21 @@ class PortfolioApp {
             });
         });
 
+        // Navigation for elements with data-section attributes
+        const sectionElements = document.querySelectorAll('[data-section]');
+        sectionElements.forEach(element => {
+            element.addEventListener('click', (e) => {
+                if (!this.isTransitioning) {
+                    const targetSection = element.getAttribute('data-section');
+                    // Find the corresponding menu item to trigger proper navigation
+                    const menuItem = document.querySelector(`.menu-item[data-section="${targetSection}"]`);
+                    if (menuItem) {
+                        this.navigateToSection(targetSection, menuItem);
+                    }
+                }
+            });
+        });
+
         // Form submission
         const form = document.querySelector('.form');
         if (form) {
@@ -74,16 +89,46 @@ class PortfolioApp {
         });
         menuItem.classList.add('active');
 
-        // Simple, instant section switching
+        // Smooth animated section switching
         const currentSectionEl = document.querySelector('.content-section.active');
         const newSectionEl = document.getElementById(sectionId);
 
         if (currentSectionEl) {
-            currentSectionEl.classList.remove('active');
+            // Fade out current section
+            currentSectionEl.style.opacity = '0';
+            currentSectionEl.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                currentSectionEl.classList.remove('active');
+                currentSectionEl.style.opacity = '';
+                currentSectionEl.style.transform = '';
+                
+                // Fade in new section
+                newSectionEl.classList.add('active');
+                newSectionEl.style.opacity = '0';
+                newSectionEl.style.transform = 'translateY(20px)';
+                
+                // Force reflow
+                newSectionEl.offsetHeight;
+                
+                // Animate in
+                newSectionEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                newSectionEl.style.opacity = '1';
+                newSectionEl.style.transform = 'translateY(0)';
+                
+                setTimeout(() => {
+                    newSectionEl.style.transition = '';
+                    newSectionEl.style.opacity = '';
+                    newSectionEl.style.transform = '';
+                    this.isTransitioning = false;
+                }, 400);
+                
+            }, 200);
+        } else {
+            // First load - direct show
+            newSectionEl.classList.add('active');
+            this.isTransitioning = false;
         }
-        
-        newSectionEl.classList.add('active');
-        this.isTransitioning = false;
         this.currentSection = sectionId;
         
         // Only trigger animations once when section first loads

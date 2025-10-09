@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | WWE 2K19 Style</title>
+    <title>Aayush Acharya | Full Stack Developer Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -110,10 +110,11 @@
             font-family: 'Rajdhani', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #666666;
+            color: #333333;
             letter-spacing: 2px;
             margin-bottom: 30px;
             transition: all 0.5s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes loadingTextPulse {
@@ -150,6 +151,45 @@
             border: 2px solid #ff0000;
             border-radius: 4px;
             background: rgba(255, 0, 0, 0.1);
+        }
+
+        .loading-key-highlight {
+            color: #ff0000;
+            font-weight: 700;
+            text-shadow: 
+                0 0 5px rgba(255, 0, 0, 0.8),
+                0 0 10px rgba(255, 0, 0, 0.6),
+                0 0 15px rgba(255, 0, 0, 0.4),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: loadingKeyGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes loadingKeyGlow {
+            0% { 
+                text-shadow: 
+                    0 0 5px rgba(255, 0, 0, 0.8),
+                    0 0 10px rgba(255, 0, 0, 0.6),
+                    0 0 15px rgba(255, 0, 0, 0.4),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 
+                    0 0 10px rgba(255, 0, 0, 1),
+                    0 0 20px rgba(255, 0, 0, 0.8),
+                    0 0 30px rgba(255, 0, 0, 0.6),
+                    0 0 40px rgba(255, 0, 0, 0.4),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+                transform: scale(1.05);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 8px rgba(255, 0, 0, 1),
+                    0 0 15px rgba(255, 0, 0, 0.8),
+                    0 0 25px rgba(255, 0, 0, 0.6),
+                    2px 2px 4px rgba(0, 0, 0, 0.8);
+                transform: scale(1);
+            }
         }
 
         .loading-xbox-button {
@@ -209,7 +249,7 @@
         </div>
         <div class="header-info">
             <div class="user-info">
-                <span class="status-indicator"></span>
+                <span class="simple-status-dot"></span>
                 <span class="online-text">ONLINE</span>
             </div>
         </div>
@@ -284,9 +324,16 @@
                         </div>
                         
                         <div class="action-section">
-                            <button class="explore-btn">
+                            <button class="explore-btn" data-section="projects">
                                 <span class="btn-text">Explore Work</span>
                                 <div class="btn-arrow">→</div>
+                            </button>
+                            
+                            <button class="freelance-button" data-section="contact">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                                    <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                                </svg>
+                                Available for Freelance
                             </button>
                         </div>
                     </div>
@@ -309,11 +356,6 @@
                                 <div class="info-number">100%</div>
                                 <div class="info-label">Dedicated</div>
                             </div>
-                        </div>
-                        
-                        <div class="status-indicator">
-                            <div class="status-dot"></div>
-                            <span class="status-text">Available for freelance</span>
                         </div>
                     </div>
                 </div>
@@ -807,82 +849,100 @@
 
             <!-- Contact Section -->
             <section class="content-section" id="contact">
-                <div class="section-header">
-                    <h2 class="section-title">CONTACT</h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="section-content">
-                    <div class="contact-layout">
-                        <div class="contact-left">
-                            <div class="contact-big-text">
-                                <h1 class="get-text">GET IN</h1>
-                                <h1 class="touch-text">TOUCH</h1>
-                            </div>
-                        </div>
+                <div class="contact-layout">
+                    <!-- Left Side: Hero Text -->
+                    <div class="contact-hero">
+                        <h1>Got a project in mind?<span class="highlight">Let's talk.</span></h1>
+                        <div class="contact-email">acharyaaayush2k4@gmail.com</div>
                         
-                        <div class="contact-right">
-                            <div class="contact-section">
-                                <h3 class="contact-heading">LOCATION</h3>
-                                <div class="contact-info">
-                                    <p>Kathmandu, Nepal</p>
-                                    <p>St. Xavier's College, Maitighar</p>
-                                    <p>BSc CSIT Student</p>
-                                </div>
+                        <!-- Social Media Links -->
+                        <div class="social-links">
+                            <a href="https://github.com/acharya-aayush" target="_blank" class="social-link-wrapper">
+                                <div id="github" class="social-btn flex-center">
+                                <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                                <span>acharya-aayush</span>
                             </div>
+                            </a>
                             
-                            <div class="contact-section">
-                                <h3 class="contact-heading">CONTACT</h3>
-                                <div class="contact-info">
-                                    <p class="social-link">
-                                        <a href="mailto:acharyaaayush2k4@gmail.com" class="icon-link">
-                                            <img src="assets/icons/gmail-icon.svg" alt="Gmail" class="social-icon-img">
-                                        </a>
-                                        <a href="mailto:acharyaaayush2k4@gmail.com">acharyaaayush2k4@gmail.com</a>
-                                    </p>
-                                    <p>+977 9865320313</p>
-                                </div>
+                            <a href="https://www.linkedin.com/in/acharyaaayush/" target="_blank" class="social-link-wrapper">
+                                <div id="linkedin" class="social-btn flex-center">
+                                <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path></svg>
+                                <span>acharyaaayush</span>
                             </div>
+                            </a>
                             
-                            <div class="contact-section">
-                                <h3 class="contact-heading">CONNECT WITH ME</h3>
-                                <div class="contact-info">
-                                    <p class="social-link">
-                                        <a href="https://www.linkedin.com/in/acharyaaayush/" target="_blank" class="icon-link">
-                                            <img src="assets/icons/linkedin-icon.svg" alt="LinkedIn" class="social-icon-img">
-                                        </a>
-                                        <a href="https://www.linkedin.com/in/acharyaaayush/" target="_blank">LinkedIn</a>
-                                    </p>
-                                    <p class="social-link">
-                                        <a href="https://github.com/acharya-aayush" target="_blank" class="icon-link">
-                                            <img src="assets/icons/github-icon.svg" alt="GitHub" class="social-icon-img">
-                                        </a>
-                                        <a href="https://github.com/acharya-aayush" target="_blank">GitHub</a>
-                                    </p>
-                                    <p class="social-link">
-                                        <a href="https://www.instagram.com/acharya.404/" target="_blank" class="icon-link">
-                                            <img src="assets/icons/instagram-icon.svg" alt="Instagram" class="social-icon-img">
-                                        </a>
-                                        <a href="https://www.instagram.com/acharya.404/" target="_blank">Instagram</a>
-                                    </p>
-                                    <p class="social-link">
-                                        <a href="https://www.facebook.com/acharya_aayush_2k4" target="_blank" class="icon-link">
-                                            <img src="assets/icons/facebook-icon.svg" alt="Facebook" class="social-icon-img">
-                                        </a>
-                                        <a href="https://www.facebook.com/acharya_aayush_2k4" target="_blank">Facebook</a>
-                                    </p>
-                                </div>
+                            <a href="https://www.instagram.com/acharya.404/" target="_blank" class="social-link-wrapper">
+                                <div id="instagram" class="social-btn flex-center">
+                                <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                                <span>acharya.404</span>
                             </div>
-                            
-                            <div class="contact-section">
-                                <h3 class="contact-heading">AVAILABILITY</h3>
-                                <div class="contact-info">
-                                    <p>Available after 11:00 AM</p>
-                                    <p>Monday - Friday: Active</p>
-                                    <p>Weekends: Limited</p>
-                                    <p>Open to opportunities</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
+                    </div>
+
+                    <!-- Right Side: Contact Form -->
+                    <div class="contact-form-section">
+                        <div class="contact-form-title">CONTACT FORM<span style="float: right;">FIG.01</span></div>
+                        
+                        <form class="contact-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <div class="input__container" data-label="NAME">
+                                        <div class="shadow__input"></div>
+                                        <button type="button" class="input__button__shadow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" width="20px" height="20px">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                                            </svg>
+                                        </button>
+                                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="input__container" data-label="EMAIL">
+                                        <div class="shadow__input"></div>
+                                        <button type="button" class="input__button__shadow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" width="20px" height="20px">
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                                            </svg>
+                                        </button>
+                                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input__container" data-label="COMPANY">
+                                    <div class="shadow__input"></div>
+                                    <button type="button" class="input__button__shadow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" width="20px" height="20px">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"></path>
+                                        </svg>
+                                    </button>
+                                    <input type="text" id="company" name="company" class="form-input" placeholder="Enter company name">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input__container" data-label="PROJECT">
+                                    <div class="shadow__input"></div>
+                                    <button type="button" class="input__button__shadow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" width="20px" height="20px">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+                                        </svg>
+                                    </button>
+                                    <textarea id="project" name="project" class="form-textarea" placeholder="Describe your project" required></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="submit-container">
+                                <button type="submit" class="submit-btn">SEND</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -904,12 +964,12 @@
     
     <!-- Loading Screen Script -->
     <script>
-        // Loading screen logic with randomized loaders
+        // Loading screen logic with LOADING letters animation
         let loadingComplete = false;
         let keyPressed = false;
         let controllerDetected = false;
 
-        // Randomize loading screen on page load
+        // Initialize loading screen on page load
         document.addEventListener('DOMContentLoaded', function() {
             initializeLoadingScreen();
         });
@@ -917,14 +977,8 @@
         function initializeLoadingScreen() {
             const loadingContainer = document.getElementById('loadingContainer');
             
-            // Randomly choose between geometric and letter loaders
-            const loaderType = Math.random() > 0.5 ? 'letters' : 'geometric';
-            
-            if (loaderType === 'letters') {
-                loadingContainer.innerHTML = createLettersLoader();
-            } else {
-                loadingContainer.innerHTML = createGeometricLoader();
-            }
+            // Always use letters loader (LOADING animation)
+            loadingContainer.innerHTML = createLettersLoader();
             
             // Start loading sequence
             setTimeout(function() {
@@ -992,48 +1046,8 @@
                     </svg>
                 </div>
 
-                <div class="loading-text">PORTFOLIO</div>
-                <div class="loading-subtitle">INITIALIZING EXPERIENCE</div>
-                <div class="loading-progress-bar">
-                    <div class="loading-progress-fill"></div>
-                </div>
-            `;
-        }
-
-        function createGeometricLoader() {
-            return `
-                <div class="loading-loader">
-                    <!-- Hidden SVG with gradients -->
-                    <svg height="0" width="0" viewBox="0 0 64 64" class="loading-absolute">
-                        <defs xmlns="http://www.w3.org/2000/svg">
-                            <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="loadingGeoGradientB">
-                                <stop stop-color="#666666"></stop>
-                                <stop stop-color="#333333" offset="1"></stop>
-                            </linearGradient>
-                            <linearGradient gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="loadingGeoGradientC">
-                                <stop stop-color="#ff0000"></stop>
-                                <stop stop-color="#666666" offset="1"></stop>
-                                <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    
-                    <!-- Rotating geometric elements -->
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="80" width="80" class="loading-inline-block loading-rotating-element">
-                        <circle stroke-width="4" stroke="url(#loadingGeoGradientB)" cx="32" cy="32" r="28" class="loading-dash" pathLength="360"></circle>
-                        <rect stroke-width="4" stroke="url(#loadingGeoGradientC)" x="16" y="16" width="32" height="32" class="loading-spin" pathLength="360"></rect>
-                    </svg>
-                    
-                    <div class="loading-w-2"></div>
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="80" width="80" class="loading-inline-block loading-rotating-element">
-                        <polygon stroke-width="4" stroke="url(#loadingGeoGradientB)" points="32,8 56,48 8,48" class="loading-dash" pathLength="360"></polygon>
-                        <circle stroke-width="4" stroke="url(#loadingGeoGradientC)" cx="32" cy="32" r="20" class="loading-spin" pathLength="360"></circle>
-                    </svg>
-                </div>
-
-                <div class="loading-text">PORTFOLIO</div>
-                <div class="loading-subtitle">INITIALIZING EXPERIENCE</div>
+                <div class="loading-text">AAYUSH ACHARYA</div>
+                <div class="loading-subtitle">INITIALIZING PORTFOLIO</div>
                 <div class="loading-progress-bar">
                     <div class="loading-progress-fill"></div>
                 </div>
@@ -1052,6 +1066,15 @@
             }
         }
 
+        // Detect if user is on mobile device
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                   ('ontouchstart' in window) || 
+                   (navigator.maxTouchPoints > 0) || 
+                   (navigator.msMaxTouchPoints > 0) ||
+                   (window.innerWidth <= 768);
+        }
+
         function showContinuePrompt() {
             const loadingText = document.querySelector('.loading-text');
             const loadingSubtitle = document.querySelector('.loading-subtitle');
@@ -1063,11 +1086,13 @@
             // Change text to prompt
             loadingText.textContent = 'READY TO ENTER';
             
-            // Show appropriate prompt based on controller detection
-            if (controllerDetected) {
-                loadingSubtitle.innerHTML = 'Press <span class="loading-key-prompt">ANY KEY</span> or <span class="loading-xbox-button">A</span> to Continue';
+            // Show appropriate prompt based on device type
+            if (isMobileDevice()) {
+                loadingSubtitle.innerHTML = '<span class="loading-key-prompt">CLICK ANYWHERE</span> to Continue';
+            } else if (controllerDetected) {
+                loadingSubtitle.innerHTML = 'Press <span class="loading-key-highlight">ANY KEY</span> or <span class="loading-xbox-button">A</span> to Continue';
             } else {
-                loadingSubtitle.innerHTML = 'Press <span class="loading-key-prompt">ANY KEY</span> to Continue';
+                loadingSubtitle.innerHTML = 'Press <span class="loading-key-highlight">ANY KEY</span> to Continue';
             }
             
             // Add pulsing effect
@@ -1076,6 +1101,21 @@
 
         // Handle keyboard and gamepad input
         document.addEventListener('keydown', function(event) {
+            if (loadingComplete && !keyPressed) {
+                keyPressed = true;
+                enterPortfolio();
+            }
+        });
+
+        // Handle touch and click for mobile devices and desktop
+        document.addEventListener('click', function(event) {
+            if (loadingComplete && !keyPressed) {
+                keyPressed = true;
+                enterPortfolio();
+            }
+        });
+
+        document.addEventListener('touchstart', function(event) {
             if (loadingComplete && !keyPressed) {
                 keyPressed = true;
                 enterPortfolio();
